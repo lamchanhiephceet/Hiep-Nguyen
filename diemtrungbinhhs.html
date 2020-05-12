@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính điểm TB</title>
+</head>
+<body>
+<script>
+    let inputToan, inputLy, inputHoa;
+    inputToan = prompt("Nhập điểm Toán");
+    inputLy = prompt("Nhập điểm Lý");
+    inputHoa = prompt("Nhập điểm Hóa");
+    let Toan = parseInt(inputToan);
+    let Ly = parseInt(inputLy);
+    let Hoa = parseInt(inputHoa);
+
+    let TB =( Toan + Ly + Hoa )/3;
+    let tg = Toan + Ly + Hoa;
+    document.write("Điểm trung bình và tổng các môn là" + TB);
+    document.write("Tổng điểm các môn là" + tg);
+
+</script>
+
+</body>
+</html>
