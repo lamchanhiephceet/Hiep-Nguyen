@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ung dung may tinh</title>
+    <style>
+        col-25 {
+            float: left;
+            width: 25%;
+        }
+    </style>
+</head>
+<body>
+<h2>Calculator</h2>
+<div>
+<form name="calculator" method="POST">
+
+                <div class="col-25">
+                    <input type="text" id="txtnum1"/>
+                </div>
+<br>
+
+                <div class="col-25">
+                    <input type="text" id="txtnum2"/>
+                </div>
+    <br>
+    <button type="button" id="cong" onClick="tinh()">Addition(+)</button>
+    <button type="button" id="tru" onClick="tinh_1()">Subtraction(-)</button>
+    <button type="button" name="nhan" onClick="tinh_2()">Multiplication(*)</button>
+    <button type="button" name="chia" onClick="tinh_3()">Division(/)</button>
+
+</form>
+    <hr/>
+    <p style="color: blue" id = "lblResult">Result: </p>
+
+    <script>
+        function tinh () {
+            let a = parseInt(document.getElementById("txtnum1").value);
+            let b = parseInt(document.getElementById("txtnum2").value);
+            let result;
+            result = a + b;
+            document.getElementById("lblResult").innerHTML = "Result: " + result;
+
+        }
+        function tinh_1 () {
+            let a = parseInt(document.getElementById("txtnum1").value);
+            let b = parseInt(document.getElementById("txtnum2").value);
+            let result;
+            result = a - b;
+            document.getElementById("lblResult").innerHTML = "Result: " + result;
+
+        }
+        function tinh_2 () {
+            let a = parseInt(document.getElementById("txtnum1").value);
+            let b = parseInt(document.getElementById("txtnum2").value);
+            let result;
+            result = a * b;
+            document.getElementById("lblResult").innerHTML = "Result: " + result;
+
+        }
+        function tinh_3 () {
+            let a = parseInt(document.getElementById("txtnum1").value);
+            let b = parseInt(document.getElementById("txtnum2").value);
+            let result;
+            result = a / b;
+            document.getElementById("lblResult").innerHTML = "Result: " + result;
+        }
+    </script>
+</form>
+</div>
+</body>
+</html>
