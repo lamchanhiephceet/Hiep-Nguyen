@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BT chuyen doi tien te</title>
+</head>
+<body>
+<h1>Currency Conversion </h1>
+
+<form action="ConvertController" method="POST">
+<table>
+<tr>
+    <th> Amount </th>
+    <th><input type="text" id="txtAmount" name="amount" /></th>
+</tr>
+<tr>
+    <th>From currency</th>
+    <th> <select name="from" id="sltFrom">
+        <option value="VNĐ">Vietnamdong</option>
+        <option value="USD">USD</option>
+    </select></th>
+</tr>
+<tr>
+    <th>To currency</th>
+    <th><select name="to" id="sltTo">
+    <option value="USD">USD</option>
+    <option value="VNĐ">Vietnamdong</option>
+        </seclect> </th>
+</table>
+ <br><br>
+
+<button style="background-color: blueviolet" type="button" onclick="convert();">Convert</button>
+
+</form>
+
+<hr/>
+<label for = "txtResult" style="color: blue" id = "lblResult">Result: </label>
+
+<script>
+    function convert() {
+    let a = parseInt(document.getElementById("txtAmount").value);
+    let from = document.getElementById("sltFrom").value;
+    let to = document.getElementById("sltTo").value;
+    let result;
+    let rate1 = 1;
+    let rate2 = 1;
+    if (from == "USD"){
+        rate1 = 1;
+    }
+    else {
+        rate1 = 23000;
+    }
+    if (to == "USD"){
+        rate2 = 1;
+    }
+else {
+    rate2 = 23000;
+    }
+result = a * rate2 / rate1
+document.getElementById("lblResult").innerHTML = "Result: " + result
+    }
+</script>
+</body>
+</html>
+
+</body>
+</html>
