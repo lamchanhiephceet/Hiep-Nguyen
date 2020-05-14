@@ -42,21 +42,21 @@
     let from = document.getElementById("sltFrom").value;
     let to = document.getElementById("sltTo").value;
     let result;
-    let rate1 = 1;
-    let rate2 = 1;
+    let m1 = 1;
+    let m2 = 1;
     if (from == "USD"){
-        rate1 = 1;
+        m1 = 1;
     }
     else {
-        rate1 = 23000;
+        m1 = 23000;
     }
     if (to == "USD"){
-        rate2 = 1;
+        m2 = 1;
     }
 else {
-    rate2 = 23000;
+    m2 = 23000;
     }
-result = a * rate2 / rate1
+result = a * m2 / m1
 document.getElementById("lblResult").innerHTML = "Result: " + result
     }
 </script>

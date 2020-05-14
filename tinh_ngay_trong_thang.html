@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tinh so ngay trong thang</title>
+</head>
+<body>
+<form>
+    <h2>Tinh So Ngay Cua Thang</h2>
+<input type="text" id="thang"/>
+<button name="button" id="tinhSongay" onclick="tinhngay()">Tinh so ngay</button>
+ <hr/>
+    <p style="color: blue" type="text" id = "mResult">Result: </p>
+
+ <script>
+
+   function tinhngay() {
+    let a = parseInt(document.getElementById("thang").value);
+      let Jan = 1, Feb = 2, Mar = 3, Apr = 4, May = 5, Jun = 6;
+      let Jul = 7, Aug = 8, Sep = 9, Oct = 10, Nov = 11, Dec = 12;
+    switch (a) {
+        case 2:
+        document.getElementById("mResult").innerHTML = "Result: co 28 hoac 29 ngay";
+            break;
+        case Apr:
+        case Jun:
+        case Sep:
+        case Nov:
+        document.getElementById("mResult").innerHTML = "Result: co 30 ngay";
+            break;
+        case Jan:
+        case Mar:
+        case May:
+        case Jul:
+        case Aug:
+        case Oct:
+        case Dec:
+        document.getElementById("mResult").innerHTML = "Result: co 31 ngay";
+            break;
+    }
+ }
+ </script>
+</form>
+</body>
+</html>
