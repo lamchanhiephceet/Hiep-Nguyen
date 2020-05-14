@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Kiem tra nam nhuan</title>
 </head>
 <body>
-$END$
+<script>
+    let year = parseInt(prompt("Enter a year"));
+    let isLeapYear = false;
+    let isDivisibleBy100;
+    let isDivisibleBy4;
+    if (isDivisibleBy4 = year % 4 == 0) {
+        if (isDivisibleBy100 = year % 100 == 0) {
+            let isDivisibleBy400 = year % 400 == 0;
+            if (isDivisibleBy400) {
+                isLeapYear = true;
+            }
+        }   else {
+            isLeapYear = true;
+        }
+    }
+    if(isLeapYear) {
+      alert(year + "la nam nhuan duong");
+    } else {
+      alert(year + "khong phai nam nhuan duong");
+    }
+</script>
+
 </body>
 </html>

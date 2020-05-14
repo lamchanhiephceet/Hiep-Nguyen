@@ -8,14 +8,14 @@
 <body>
 <script>
     let login = prompt("Moi dang nhap");
-    let message = (login == 'Employee') ?
+    let message = ( login == 'Employee' ) ?
         'Hello':
-        (login == 'Director') ?
+        ( login == 'Director' ) ?
             'Greetings':
-            (login =='') ?
+            ( login =='' ) ?
              'No login':
                 '';
-    alert(+message);
+    alert( message);
 </script>
 
 </body>
