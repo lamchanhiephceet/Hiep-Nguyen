@@ -33,43 +33,44 @@
         border-collapse: collapse;
     }
 
-    form table tr, form table td {
+    tr,td {
         border: 1px solid #eee;
     }
 
-    table tr:first-child input {
-        height: 50px;
-        padding: 0 10px;
-        font-weight: 700;
+  tr:first-child input
+     height: 50px;
+     padding: 0 10px;
+     font-weight: 700;
     }
 
-    table tr:not(:first-child) td {
+    tr:not(:first-child) td {
         height: 70px;
     }
 
-    table tr:not(:first-child) td input {
+    tr:not(:first-child) td input {
         height: 100%;
     }
 
-    table input {
-        width: 100%;
-        display: block;
-        border: 0;
-        font-size: 16px;
+  input {
+          width: 100%;
+          display: block;
+          border: 0;
+          font-size: 16px;
+  }
+
+
+    input:focus {
+      outline: none;
     }
 
-    table input:focus {
-        outline: none;
+    input:hover {
+           background: #eee;
+           transition: all .2s ease-in-out;
     }
 
-    table input:hover {
-        background: #eee;
-        transition: all .2s ease-in-out;
-    }
-
-    table input.operator {
-        font-weight: 700;
-        color: #fff;
+    input.operator {
+     font-weight: 700;
+       color: #fff;
         background: #ffcc00;
     }
 </style>
