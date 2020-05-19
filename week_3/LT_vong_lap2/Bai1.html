@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In day Fibonnaci</title>
+</head>
+<body>
+<script>
+    let rate = parseInt(prompt("Nhap pham vi so Fibonacci can in ra: "));
+    let a = 0, b = 0, c = 0;
+    let fib = "";
+    for (i = 0; i<= rate; i++) {
+        if(i==0) {
+            b = 1
+            c = 1
+            fib += a+ " "
+        } else {
+            a = b + c
+            b = c
+            c = a
+            fib += a+ " "
+            console.log(i +" = "+a)
+        }
+    }
+    document.write(fib);
+</script>
+</body>
+</html>
