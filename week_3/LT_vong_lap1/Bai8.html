@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game dan so</title>
+</head>
+<body>
+<script>
+    let rate = parseInt(prompt("Pham vi so doan tu 0- "));
+    let num = parseInt(prompt("Nhap so ban doan: "));
+    let random;
+    if(rate) {
+        random = Math.floor(Math.random()*rate);
+        if(random == num) {
+            alert("Ban doan dung");
+        } else {
+            while (random != num) {
+            alert("Ban doan sai, so dung la: " + random);
+                num = parseInt(prompt("Nhap so ban doan: "));
+            }
+            alert("Ban doan dung");
+        }
+
+    }
+</script>
+</body>
+</html>

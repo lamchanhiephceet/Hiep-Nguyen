@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Dieu chinh nhiet do</title>
 </head>
 <body>
-$END$
+<script>
+    let t = prompt("Nhap nhiet do hien tai");
+while (t < 20 || t > 100) {
+    if(t < 20) {
+        alert("Yeu cau tang nhiet do");
+        t = (prompt("Nhap nhiet do hien tai"));
+    } else if (t > 100) {
+        alert("Yeu cau giam nhiet do");
+        t = prompt("Nhap nhiet do hien tai");
+    }
+}
+ alert("Nhiet do binh thuong");
+</script>
 </body>
 </html>
