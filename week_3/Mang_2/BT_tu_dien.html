@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bt tu dien Anh Viet</title>
+</head>
+<body>
+<input type="text" id="tieng_Anh" >
+<input type="button" value="Dịch" onclick="dich()" >
+<br><br>
+<hr>
+<p id="tieng_Viet" />
+<script>
+    let tieng_Anh = document.getElementById("tieng_Anh");
+    let mangEN = ["how", "are", "you", "feel", "today", "i'm", "fine", "thanks"];
+    let mangVI = ["thế nào", "là", "bạn", "cảm thấy", "hôm nay", "toi", "ổn", "cảm ơn"];
+     document.write("Có thể dịch được ["+mangEN.join(" ")+"]");
+    let count = 0;
+    function dich() {
+
+        for(let i = 0; i < mangEN.length; i++) {
+            if(mangEN[i] == tieng_Anh.value) {
+                count = 0;
+                document.getElementById("tieng_Viet").innerHTML = mangVI[i];
+                break;
+            } else {
+                count++;
+            }
+        }
+        if(count != 0) {
+            alert("Khong co du lieu");
+        }
+    }
+</script>
+
+</body>
+</html>
