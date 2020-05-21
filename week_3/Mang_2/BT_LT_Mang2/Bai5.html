@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai5</title>
+</head>
+<body>
+<script>
+    let chuoi1 = prompt("Nhap chuoi 1");
+    let chuoi2 = prompt("Nhap chuoi 2");
+    let ss = true;
+    document.write("Chuoi 1: "+chuoi1+" <br>"+ "Chuoi 2: "+chuoi2+" <br>");
+    if(chuoi1.length != chuoi2.length) {
+        document.write("Hai chuoi khong giong nhau<br>");
+    }else{
+        for(let i=0;i<chuoi1.length;i++) {
+            for (let j = 0; j < chuoi2.length; j++) {
+                if (chuoi1[i] == chuoi2[i]) {
+                    ss = true;
+                } else {
+                    ss = false;
+                }
+            }
+        }
+        if(ss = false) {
+            document.write("Hai chuoi khong giong nhau <br>");
+        }else{
+            document.write("Hai chuoi giong nhau <br>");
+        }
+    }
+</script>
+
+</body>
+</html>
