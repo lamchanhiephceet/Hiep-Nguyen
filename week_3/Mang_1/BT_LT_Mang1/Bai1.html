@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai1</title>
+</head>
+<body>
+<script>
+    let sn = [];
+    let sn10 = [];
+
+    for(let i=0;i<10;i++) {
+        sn[i] = parseInt(prompt("Nhap so vao mang"));
+    }
+    document.write("sn = ["+sn+"]<br>");
+    for(let i=0; i < sn.length; i++) {
+        if(sn[i]>10) {
+            sn10.push(sn[i]);
+        }
+    }
+    document.write("Phan tu cua mang >= 10["+sn10+"]<br>");
+</script>
+</body>
+</html>

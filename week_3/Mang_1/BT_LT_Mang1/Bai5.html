@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai5</title>
+</head>
+<body>
+<script>
+    let mang_duong = [];
+    let mang_am = [];
+
+    for(let i=0; i<10;i++) {
+        mang_duong[i] = parseInt(prompt("Nhap so vao trong mang"));
+
+        if(mang_duong[i] < 0) {
+            mang_am.push(mang_duong[i])
+        }
+    }
+    document.write("Mang da nhap la ["+mang_duong+"]<br>");
+    document.write("Mang cac so am co["+mang_am.length+"]so gom cac phan tu["+mang_am+"]<br>");
+</script>
+
+</body>
+</html>

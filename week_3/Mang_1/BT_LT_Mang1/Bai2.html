@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai2</title>
+</head>
+<body>
+<script>
+    let ms = [];
+    let max = 0, p = 0;
+    for(let i=0; i<10;i++) {
+        ms[i] = parseInt(prompt("Nhap so vao mang"));
+    }
+    document.write("ms = ["+ms+"]<br>");
+    for( let i=0; i<ms.length;i++) {
+        if(max<ms[i]) {
+            max = ms[i];
+            p = i;
+        }
+    }
+    document.write("Phan tu lon nhat trong mang la ["+max+"] tai vi tri ["+p+"]");
+</script>
+</body>
+</html>

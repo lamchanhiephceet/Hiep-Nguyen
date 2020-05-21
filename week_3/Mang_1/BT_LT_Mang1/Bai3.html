@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai3</title>
+</head>
+<body>
+<script>
+let ms = [];
+let max = 0, p = 0;
+let tb_Cong = 0;
+for(let i=0; i<10;i++) {
+ms[i] = parseInt(prompt("Nhap so vao mang"));
+}
+document.write("ms = ["+ms+"]<br>");
+for( let i=0; i<ms.length;i++) {
+if(max<ms[i]) {
+max = ms[i];
+p = i;
+    tb_Cong += ms[i];
+}
+    tb_Cong = tb_Cong/ms.length;
+}
+
+document.write("Phan tu lon nhat trong mang la ["+max+"] tai vi tri ["+p+"]");
+document.write("Trung binh cong cua cac so trong mang la: "+tb_Cong+"");
+</script>
+</body>
+</body>
+</html>

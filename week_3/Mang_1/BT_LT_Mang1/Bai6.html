@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai6</title>
+</head>
+<body>
+<script>
+    let mang = [];
+    let n = true;
+
+    for(let i=0; i<10; i++) {
+        mang[i] = prompt("Nhap so vao mang");
+
+        if (mang[i] == "V") {
+            n =false;
+        }
+    }
+        document.write("Mang vua nhap la ["+mang+"]<br>");
+        if (n == false) {
+            document.write("V is in the array");
+        } else {
+            document.write("V is not in the array");
+        }
+
+</script>
+
+</body>
+</html>
