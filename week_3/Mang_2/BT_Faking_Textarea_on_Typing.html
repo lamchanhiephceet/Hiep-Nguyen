@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ung dung vui Faking textare on Typing</title>
+</head>
+<body>
+<form action="" name="f">
+    <h3>Faking Textarea On Typing</h3>
+    <textarea name="textarea" id="text_area" cols="30" rows="10" onkeydown="setTextArea()"></textarea>
+</form>
+<script>
+    let str = "HOW ARE YOU FEEL TODAY ?";
+    let s ="";
+    function setTextArea() {
+        let area = document.f.text_area.value;
+        let l = area.length;
+
+        if(l>0) {
+            for(let i=1; i<=l;i++) {
+                s += str[i-1];
+                console.log(str[i-1]);
+                if(i==25) {
+                    s = "";
+                    document.f.text_area.value= "";
+                }
+            }
+            document.f.text_area.value = s;
+            s = "";
+            let time = setTimeout("setTextArea()", 1);
+        }
+    }
+</script>
+</body>
+</html>
