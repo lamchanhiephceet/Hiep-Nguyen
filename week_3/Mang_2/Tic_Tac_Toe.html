@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+<h3>Tic Tac Toe </h3>
+<p id="tictactoe">
+    <button type='button' onclick='changeX()'>Player1</button>&ensp;
+    <button type='button' onclick='changeO()'>Player2</button>
+
+<script>
+    let b = document.getElementById("tictactoe");
+    let board = [];
+    let data = "";
+    for(let i=0;i<5;i++){
+        board[i] = [".",".",".",".","."];
+    }
+    for(let i=0;i<5;i++){
+        data += "<br/>";
+        for(let j=0;j<5;j++){
+            data += board[i][j] +"&ensp;";
+        }
+    }
+    data += "<br><br><button type='button' onclick='changeX()'>X</button>&ensp;<button type='button' onclick='changeO()'>O</button>";
+    b.innerHTML = data;
+
+    function changeX() {
+        let X = prompt("Enter X");
+        if(X>5) prompt("Enter X again");
+        let Y = prompt("Enter Y");
+        if(Y>5) prompt("Enter Y again");
+        data = "";
+        if(board[X][Y]!== "O"){
+            board[X][Y]= "X";
+        }
+        else {alert("Its have been ticked");}
+        for(let i = 0;i<5;i++){
+            data += "<br>";
+            for (let j=0;j<5;j++){
+                data += board[i][j] + "&ensp;";
+            }
+        }
+        data += "<br><br> <button type='button' onclick='changeX()'>X</button>&ensp;<button type='button' onclick='changeO()'>O</button>";
+        b.innerHTML = "<br>"+ data;
+    }
+
+    function changeO() {
+        let X = prompt("Enter X");
+        let Y = prompt("Enter Y");
+        data = "";
+        if (board[X][Y] !== "X") {
+            board[X][Y] = "O";
+        } else {
+            alert("Its have been ticked");
+        }
+
+        for (let i = 0; i < 5; i++) {
+            data += "<br>";
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&ensp;";
+            }
+        }
+
+        data += "<br><br><button type='button' onclick='changeX()'>X</button>&ensp;<button type='button' onclick='changeO()'>O</button>";
+        b.innerHTML = "<br>" + data;
+
+    }
+</script>
+</body>
+</html>
