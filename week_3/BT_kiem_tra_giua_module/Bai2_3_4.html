@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai2,3,4</title>
+</head>
+<body>
+<button type="button" onclick="bai2()">Bai 2</button>
+<button type="button" onclick="bai3()">Bai 3</button>
+<button type="button" onclick="bai4()">Bai 4</button>
+<script>
+    function bai2(){
+        let mang = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+        function tong_Odd(mang) {
+            let tong_Odd = 0;
+            for (let i = 0; i < mang.length; i++) {
+                if (mang[i] % 2 != 0) {
+                    tong_Odd += mang[i];
+                }
+            }
+            return tong_Odd;
+        }
+        document.write("Tong so le trong mang la: " + tong_Odd(mang));
+    }
+
+    function bai3() {
+    let c = new Date().getFullYear();
+    let birthday = prompt("Nhập vào năm sinh của bạn: ");
+    birthday = new Date(birthday).getFullYear();
+        if(birthday >= c) {
+            alert("Khong hop le");
+        } else {
+    alert("Tuổi của bạn là: "+(c - birthday));}
+
+    }
+
+    function bai4() {
+        let count = 0;
+        let dayso ="";
+        for (let i=1;i<100; i++){
+            if(i%7==0 || i%3==0) {
+                dayso += i+" ";
+                count++;
+            }
+        }
+        document.write(dayso+"<br>");
+    }
+</script>
+
+</body>
+</html>
