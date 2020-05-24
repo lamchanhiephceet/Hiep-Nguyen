@@ -5,6 +5,7 @@
     <title>Bai 1 hien thi so nguyen to</title>
 </head>
 <body>
+<h3> Hien thi day so nguyen to</h3><br>git
 <input id="number" type="text"/>
 <button type="button" onclick="txt.innerHTML=isPrime(number.value)">Show</button>
 <hr>
@@ -27,14 +28,14 @@
     }
     function isPrime(number) {
         let n = parseInt(number);
-        let SequenceNumbers = ',';
+        let daySo = ',';
         for (let i = 2; i < n; i++) {
             let Result = check(i);
             if (Result !== false) {
-                SequenceNumbers += (Result  + ',');
+                daySo += (Result  + ',');
             }
         }
-        return SequenceNumbers;
+        return daySo;
     }
 </script>
 
