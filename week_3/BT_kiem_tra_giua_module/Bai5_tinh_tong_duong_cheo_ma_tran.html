@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai5 Tinh tong duong cheo ma tran vuong</title>
+</head>
+<body>
+<script>
+   function sum(array) {
+       let sum = 0;
+       for (let i = 0; i < array.length; i++){
+           for (let j = 0; j < array.length; j++){
+               if (i === j){
+                   sum += array[i][j];
+               }
+           }
+       }
+       document.write('Tổng đường chéo chính của ma trận vuông là: ' + sum);
+   }
+
+   let array = [
+       [1, 3, 6, 2, 7],
+       [9, 12, 1, 7, 3],
+       [8, 5, 6, 3, 8],
+       [8, 9, 3, 2, 5],
+       [2, 8, 4, 3, 7],
+   ];
+   sum(array);
+</script>
+
+</body>
+</html>
