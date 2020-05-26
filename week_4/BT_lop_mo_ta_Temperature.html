@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BT xay dung lop mo ta Temperature</title>
+</head>
+<body>
+<p id="temp"> </p>
+<script>
+    function Temperature(c) {
+        this.c = c;
+        this.cToF = function () {
+            return (1.8*c+32);
+        }
+        this.cToK = function () {
+            return (c+273.15);
+        }
+    }
+    function main() {
+        let temp = new Temperature(25);
+        let F = temp.cToF();
+        let K = temp.cToK();
+        document.getElementById("temp").innerHTML= "Độ F: "+F+" Độ K: "+K;
+    }
+    main();
+</script>
+
+</body>
+</html>
