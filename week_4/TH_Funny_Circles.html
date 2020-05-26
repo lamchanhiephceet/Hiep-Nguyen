@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TH Funny Circle</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368" height="768" style="border: 1px solid #d3d3d3;"></canvas>
+<script>
+    function Circle(x,y,radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+    function createCircle(){
+        let ctx = document.getElementById("myCanvas").getContext("2d");
+        let r = Math.floor(Math.random()*80); //ve theo ban kinh ngau nhien khai bao r
+        let circle = new Circle(500, 500, r);
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    createCircle();
+</script>
+</body>
+</html>
