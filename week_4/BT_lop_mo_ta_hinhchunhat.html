@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BT xay dung lop mo ta hinh chu nhat</title>
+</head>
+<body>
+<p id="result"> </p>
+<canvas id="myCanvas" width="1368px" height="768px" style="border: 1px solid #d3d3d3;"></canvas>
+<script>
+
+    function Rectangle(length,width) {
+
+        this.length = length;
+        this.width = width;
+        this.perimeter = function () {
+            return (length + width) * 2;
+        }
+        this.area = function () {
+            return length * width;
+        }
+        this.drawRect = function () {
+            let rect = document.getElementById("myCanvas").getContext("2d");
+            rect.fillStyle="#FF0000";
+            rect.fillRect(0,0,length,width);
+        }
+    }
+    function main () {
+        let rectan = new Rectangle(parseInt(prompt("Nhap chieu dai: ")), parseInt(prompt("Nhap chieu rong")));
+        let per = rectan.perimeter();
+        let area = rectan.area();
+        document.getElementById("result").innerHTML = "Hinh chu nhat co chu vi la: "+per+" va dien tich la "+area;
+        rectan.drawRect();
+    }
+    main ();
+</script>
+</body>
+</html>
