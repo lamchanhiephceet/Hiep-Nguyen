@@ -12,15 +12,34 @@
         this.y = y;
         this.radius = radius;
     }
+    function getRandomHex(){ //nhan gia tri ngau nhien
+        return Math.floor(Math.random()*255);
+    }
+    function getRandomColor() { // ham tao rgb theo gia tri ngau nhien
+        let red = getRandomHex();
+        let green = getRandomHex();
+        let blue = getRandomHex();
+        return "rgb(" + red + "," + blue + "," + green + ")";
+    }
     function createCircle(){
         let ctx = document.getElementById("myCanvas").getContext("2d");
-        let r = Math.floor(Math.random()*80); //ve theo ban kinh ngau nhien khai bao r
-        let circle = new Circle(500, 500, r);
+        let r = Math.floor(Math.random()*80);//ve theo ban kinh ngau nhien khai bao r
+        let color = getRandomColor(); //khai bao function
+        let x = Math.random() * window.innerWidth;
+        let y = Math.random() * window.innerHeight;
+        let circle = new Circle(x, y, r);
         ctx.beginPath();
         ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = color; //goi function
         ctx.fill();
     }
-    createCircle();
+    function createMultipleCircle() {
+        for(var i=0; i<30;i++) {
+            createCircle();
+        }
+    }
+
+    createMultipleCircle();
 </script>
 </body>
 </html>
