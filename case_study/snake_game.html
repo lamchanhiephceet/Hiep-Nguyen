@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snake games</title>
+</head>
+<body>
+<canvas id="canvas" tabindex="0" style="margin:0px; border: 1px solid"> </canvas>
+</body>
+<script>
+    let cell_size = 10;
+    let width = 400;
+    let height = 400;
+    let score = 0;
+
+    let dead = new Audio();
+    let eat = new Audio();
+    let up = new Audio();
+    let right = new Audio();
+    let left = new Audio();
+    let down = new Audio();
+
+    up.src = "audio/up.mp3";
+    right.src = "audio/right.mp3";
+    left.src = "audio/left.mp3";
+    down.src = "audio/down.mp3";
+    dead.src = "audio/dead.mp3";
+    eat.src = "audio/eat.mp3";
+
+
+    function Game(){
+        let pressedKey;
+        let cols = width/cell_size;
+        let rows = height/cell_size;
+        let snake = new Snake(cols,rows);
+
+        let ctx = document.getElementById('canvas');
+        let context = ctx.getContext('2d');
+        context.fillStyle = "black";
+
+        let food = {};
+        let running = false;
+        let timer;
+
+        this.init = function() {
+            canvas.width = width;
+            canvas.height = height;
+
+            canvas.onkeydown = function(e) {
+                e.preventDefault();
+                if(e.keyCode == 13) // Enter key
+                {
+                    if(!running)
+                        startGame();
+                }
+                else if(running)
+                {
+                    pressedKey = e.keyCode;
+                }
+            };
+
+            context.textAlign = "center";
+            context.font = "36px Arial";
+            context.fillText("Canvas Snake",width/2,height/3);
+            context.font = "16px Arial";
+            context.fillText("Press Enter to Start",width/2,height/2);
+
+        }
+
+        function startGame() {
+            pressedKey = null;
+            clearInterval(timer);
+            snake.init();
+            createFood();
+            running = true;
+            timer = setInterval(update,100);
+
+        }
+
+        function update() {
+            if(!running)
+                return;
+
+            snake.handleKey(pressedKey);
+            let ret = snake.update(food);
+
+            if(ret==1)
+            {
+                createFood();
+            }else if(ret==2) {
+
+                running = false;
+                context.save();
+                context.fillStyle = "rgba(0,0,0,0.2)";
+                context.fillRect(0,0,width,height);
+                context.restore();
+                context.fillText("Game Over",width/2,height/2);
+                dead.play();
+                score = 0;
+                return;
+            }
+
+            draw();
+        }
+        function draw(){
+
+            context.beginPath();
+            context.clearRect(0,0,width,height);
+            context.fill();
+
+            snake.draw(context);
+
+            context.beginPath();
+            context.arc((food.x*cell_size)+cell_size/2, (food.y*cell_size)+cell_size/2, cell_size/2, 0, Math.PI*2, false);
+            context.fill();
+            context.fillText("Score: "+score, 40, height - cell_size);
+        }
+
+        function createFood() {
+            let x = Math.floor(Math.random()*cols);
+            let y;
+            do {
+                y = Math.floor(Math.random()*rows);
+            } while(snake.collide(x, y));
+
+            food = {x: x, y: y};
+        }
+
+    }
+
+    function Snake(mapCols,mapRows){
+
+
+        let LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3;
+        let direction;
+        let data;
+
+        this.init = function(){
+            let x = 3;
+            let y = 0;
+            data = [
+                {x: x, y: y},
+                {x: x-1, y: y},
+                {x: x-2, y: y}
+            ];
+            direction = RIGHT;
+        };
+        this.handleKey = function(key){
+
+            if(key >= 37 && key <=40)
+            {
+                let newdir = key - 37;
+                if(Math.abs(direction-newdir)!=2)
+                    direction = newdir;
+            }
+        };
+        this.draw = function(ctx) {
+            for(let i = 0;i < data.length; i++)
+                ctx.fillRect(data[i].x*cell_size, data[i].y*cell_size, cell_size, cell_size);
+        };
+
+        this.update = function(food){
+            let x = data[0].x;
+            let y = data[0].y;
+
+            switch(direction) {
+                case LEFT:
+                    x--;
+                    left.play();
+                    break;
+                case UP:
+                    y--;
+                    up.play();
+                    break;
+                case RIGHT:
+                    x++;
+                    right.play();
+                    break;
+                case DOWN:
+                    y++;
+                    down.play();
+                    break;
+            }
+
+
+            if(x == food.x && y == food.y)
+            {
+                score++;
+                eat.play();
+                data.unshift(food);
+                return 1;
+            }
+
+            if(this.collide(x,y))
+                return 2;
+
+            data.unshift({x:x, y:y});
+            data.pop();
+            return 0;
+        };
+
+        this.collide = function(x, y) {
+
+            if(x < 0 || x > mapCols-1)
+                return true;
+
+            if(y < 0 || y > mapRows-1)
+                return true;
+
+            for(let i = 0; i<data.length; i++) {
+                if(x == data[i].x && y == data[i].y)
+                    return true;
+            }
+            return false;
+        }
+    }
+
+    let game = new Game("canvas");
+    game.init();
+
+</script>
+
+</html>
