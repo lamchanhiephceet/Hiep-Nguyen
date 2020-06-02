@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Snake games</title>
+    <title>Snake game</title>
 </head>
 <body>
 <canvas id="canvas" tabindex="0" style="margin:0px; border: 1px solid"> </canvas>
@@ -15,9 +15,18 @@
 
     let dead = new Audio();
     let eat = new Audio();
+    let up = new Audio();
+    let right = new Audio();
+    let left = new Audio();
+    let down = new Audio();
 
+    up.src = "audio/up.mp3";
+    right.src = "audio/right.mp3";
+    left.src = "audio/left.mp3";
+    down.src = "audio/down.mp3";
     dead.src = "audio/dead.mp3";
     eat.src = "audio/eat.mp3";
+
 
 
     function Game(){
@@ -51,11 +60,13 @@
                 }
             };
 
+            // draw the welcome screen
             context.textAlign = "center";
             context.font = "36px Arial";
             context.fillText("Canvas Snake",width/2,height/3);
             context.font = "16px Arial";
             context.fillText("Press Enter to Start",width/2,height/2);
+
 
         }
 
@@ -66,6 +77,7 @@
             createFood();
             running = true;
             timer = setInterval(update,100);
+
 
         }
 
@@ -80,7 +92,7 @@
             {
                 createFood();
             }else if(ret==2) {
-
+                // end game
                 running = false;
                 context.save();
                 context.fillStyle = "rgba(0,0,0,0.2)";
@@ -101,7 +113,7 @@
             context.fill();
 
             snake.draw(context);
-
+            // draw food
             context.beginPath();
             context.arc((food.x*cell_size)+cell_size/2, (food.y*cell_size)+cell_size/2, cell_size/2, 0, Math.PI*2, false);
             context.fill();
@@ -122,11 +134,13 @@
 
     function Snake(mapCols,mapRows){
 
-
+        // directions
         let LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3;
-        let direction;
-        let data;
 
+        let direction; // moving direction
+        let data; // snake's body
+
+        // PROTOTYPES
         this.init = function(){
             let x = 3;
             let y = 0;
@@ -138,15 +152,15 @@
             direction = RIGHT;
         };
         this.handleKey = function(key){
-
+            // 37: left, 38: up, 39: rigth, 40: down
             if(key >= 37 && key <=40)
             {
                 let newdir = key - 37;
-                if(Math.abs(direction-newdir)!=2)
+                if(Math.abs(direction-newdir)!=2) // khong the quay theo huong nguoc lai
                     direction = newdir;
             }
         };
-        this.draw = function(ctx) {
+        this.draw = function(ctx) {  //ve hinh ran
             for(let i = 0;i < data.length; i++)
                 ctx.fillRect(data[i].x*cell_size, data[i].y*cell_size, cell_size, cell_size);
         };
@@ -158,19 +172,24 @@
             switch(direction) {
                 case LEFT:
                     x--;
+                    left.play();
                     break;
                 case UP:
                     y--;
+                    up.play();
                     break;
                 case RIGHT:
                     x++;
+                    right.play();
                     break;
                 case DOWN:
                     y++;
+                    down.play();
                     break;
             }
 
 
+            // eat food: return 1
             if(x == food.x && y == food.y)
             {
                 score++;
@@ -178,31 +197,34 @@
                 data.unshift(food);
                 return 1;
             }
-
+            // collide: return 2
             if(this.collide(x,y))
                 return 2;
-
+            // snake move by
+            // Phương thức unshift sẽ thêm một hoặc nhiều phần tử vào đầu mảng
             data.unshift({x:x, y:y});
+            // thêm 1 ô vuông phía trc thì phải remove 1 cái phía sau để snake move dc.
             data.pop();
+            // default: return 0
             return 0;
         };
 
         this.collide = function(x, y) {
-
+            // check va cham truc x
             if(x < 0 || x > mapCols-1)
                 return true;
-
+            // check va cham truc y
             if(y < 0 || y > mapRows-1)
                 return true;
-
+            // check va chạm khi rắn đụng đuôi
             for(let i = 0; i<data.length; i++) {
                 if(x == data[i].x && y == data[i].y)
                     return true;
-            }
+            } //false la trang thai dang chay, true la dung chay
             return false;
         }
     }
-
+    // LOAD(tai game)
     let game = new Game("canvas");
     game.init();
 
