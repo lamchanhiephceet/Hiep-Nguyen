@@ -19,6 +19,15 @@
     dead.src = "audio/dead.mp3";
     eat.src = "audio/eat.mp3";
 
+    function getRandomHex() {
+        return Math.floor(Math.random()*255);
+    }
+    function getRandomColor() {
+        let red = getRandomHex();
+        let green = getRandomHex();
+        let blue = getRandomHex();
+        return "rgb(" + red + "," + blue + "," + green + ")";
+    }
 
     function Game(){
         let pressedKey;
@@ -28,7 +37,6 @@
 
         let ctx = document.getElementById('canvas');
         let context = ctx.getContext('2d');
-        context.fillStyle = "black";
 
         let food = {};
         let running = false;
@@ -40,7 +48,7 @@
 
             canvas.onkeydown = function(e) {
                 e.preventDefault();
-                if(e.keyCode == 13) // Enter key
+                if(e.keyCode == 13)
                 {
                     if(!running)
                         startGame();
@@ -86,18 +94,21 @@
                 context.fillStyle = "rgba(0,0,0,0.2)";
                 context.fillRect(0,0,width,height);
                 context.restore();
-                context.fillText("Game Over",width/2,height/2);
+                context.fillText("Game Over!",width/2,height/2);
                 dead.play();
                 score = 0;
                 return;
             }
+            // if(score >= 3)
+            //     timer = setInterval(update,1000);
 
             draw();
         }
         function draw(){
-
+            let color = getRandomColor();
             context.beginPath();
             context.clearRect(0,0,width,height);
+            context.fillStyle = color;
             context.fill();
 
             snake.draw(context);
@@ -169,7 +180,6 @@
                     y++;
                     break;
             }
-
 
             if(x == food.x && y == food.y)
             {
