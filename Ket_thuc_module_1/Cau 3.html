@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cau 3 ham kiem tra so fibonaccy</title>
+</head>
+<body>
+<script>
+    function isFibonaccy(number) {
+        let isFibonac = false;
+        let a = 0;
+        let b= 1;
+        let c = a + b;
+        while( c < number) {
+            c = a + b;
+            a = b;
+            b =c;
+        }
+        if(c === number) {
+            isFibonac = true;
+        }
+        return isFibonac;
+    }
+let x = parseInt(prompt("Nhap so nguyen can kiem tra: "));
+    document.write('so' +x+  'nam trong day Fibonnacci la:' +isFibonaccy(x));
+
+</script>
+
+</body>
+</html>
