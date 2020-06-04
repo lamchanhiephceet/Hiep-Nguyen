@@ -6,20 +6,20 @@
 </head>
 <body>
 <script>
-    function isFibonaccy(number) {
-        let isFibonac = false;
+    function isFibonaccy(num) {
+        let isFibona = false;
         let a = 0;
         let b= 1;
         let c = a + b;
-        while( c < number) {
+        while( c < num) {
             c = a + b;
             a = b;
             b =c;
         }
-        if(c === number) {
-            isFibonac = true;
+        if(c === num) {
+            isFibona = true;
         }
-        return isFibonac;
+        return isFibona;
     }
 let x = parseInt(prompt("Nhap so nguyen can kiem tra: "));
     document.write('so' +x+  'nam trong day Fibonnacci la:' +isFibonaccy(x));
